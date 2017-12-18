@@ -36,10 +36,10 @@ install_nodejs() {
   fi
 
   echo "Checking cache for node version $number..."
-  if [ -f "$CACHE_DIR/node-v$number-$os-$cpu.tar.gz" ]
+  if [ -f "/cache/node-v$number-$os-$cpu.tar.gz" ]
   then
     echo "Cache found for node version $number..."
-    cp $CACHE_DIR/node-v$number-$os-$cpu.tar.gz /tmp/node.tar.gz
+    cp /cache/node-v$number-$os-$cpu.tar.gz /tmp/node.tar.gz
     tar xzf /tmp/node.tar.gz -C /tmp
     rm -rf $dir/*
     mv /tmp/node-v$number-$os-$cpu/* $dir
@@ -50,7 +50,7 @@ install_nodejs() {
     if [ "$code" != "200" ]; then
       echo "Unable to download node: $code" && false
     fi
-    cp /tmp/node.tar.gz $CACHE_DIR/node-v$number-$os-$cpu.tar.gz
+    cp /tmp/node.tar.gz /cache/node-v$number-$os-$cpu.tar.gz
     tar xzf /tmp/node.tar.gz -C /tmp
     rm -rf $dir/*
     mv /tmp/node-v$number-$os-$cpu/* $dir
